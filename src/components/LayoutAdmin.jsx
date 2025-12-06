@@ -14,11 +14,11 @@ export default function LayoutAdmin({ children }) {
 
     if (!session) {
         setTimeout(() => {
-            router.push("/login");
-        }, 100);
-
-        return null;
-    }
+        router.push("/login");
+    }, 500); 
+    
+    return null;
+}
 
     return <div className="min-h-screen">{children}</div>
 }

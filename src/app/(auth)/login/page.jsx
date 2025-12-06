@@ -32,28 +32,35 @@ export default function Login() {
     }
     
     async function handleSubmit(values){
-        setIsSubmitting(true);
-        setError(""); 
+    setIsSubmitting(true);
+    setError("");
 
-        try {
-            const result = await signIn('credentials', {
-                redirect: false,
-                email: values.email,
-                password: values.password,
-            });
+    try {
+        const result = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+        });
 
-            if (result.error) {
-                renderError(result.error);
-            } else {
-                router.push('/'); // Rota de redirecionamento após login bem-sucedido
-            }
+        // 🛑 DEBUG: Logar o objeto result COMPLETO no console do navegador
+        console.log("Resultado do NextAuth:", result);
 
-        } catch (err) {
-            renderError("Erro ao tentar conectar ao servidor de autenticação.");
-        } finally {
-            setIsSubmitting(false);
+        if (result.error) {
+            // Se houver erro real (credenciais inválidas, etc.)
+            renderError(result.error); 
+        } else {
+            // ✅ Se NÃO houver erro, faça o redirecionamento
+            router.push('/'); 
         }
+
+    } catch (error) {
+        // Este catch é o que provavelmente está pegando o erro no Vercel
+        renderError("Erro ao tentar conectar ao servidor de autenticação.");
+        // O router.push não é executado se cair aqui.
+    } finally {
+        setIsSubmitting(false);
     }
+}
 
     return (
         <main id="login" className="min-h-screen w-full flex items-center justify-center">

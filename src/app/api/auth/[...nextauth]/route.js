@@ -49,7 +49,6 @@ const options = NextAuth({
             }
             return token;
         },
-        
         async session({ session, token }) {
             if (token.id) {
                 session.user.id = token.id;
