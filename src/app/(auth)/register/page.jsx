@@ -68,7 +68,7 @@ export default function Register() {
 
     return (
         <main className="min-h-screen flex flex-col items-center justify-center">
-            <h1 class="text-5xl text-black font-bold mb-2">Registro</h1>
+            <h1 className="text-5xl text-black font-bold mb-2">Registro</h1>
             <Formik onSubmit={handleSubmit} initialValues={initialValues} validationSchema={validationSchema}>
                 {({values, handleSubmit, isSubmitting: formikIsSubmitting}) => ( 
                     <form noValidate onSubmit={handleSubmit}>
