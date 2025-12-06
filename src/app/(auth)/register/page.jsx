@@ -68,6 +68,7 @@ export default function Register() {
 
     return (
         <main className="min-h-screen flex flex-col items-center justify-center">
+            <h1 class="text-5xl text-black font-bold mb-2">Registro</h1>
             <Formik onSubmit={handleSubmit} initialValues={initialValues} validationSchema={validationSchema}>
                 {({values, handleSubmit, isSubmitting: formikIsSubmitting}) => ( 
                     <form noValidate onSubmit={handleSubmit}>
@@ -89,7 +90,7 @@ export default function Register() {
                                 type="submit" 
                                 text={isSubmitting ? "REGISTRANDO..." : "REGISTRAR-SE"} 
                                 disabled={isSubmitting} 
-                                className="bg-blue-500 text-white p-2 px-6 rounded hover:bg-blue-600 cursor-pointer disabled:opacity-50">
+                                className="w-full bg-[#1B4A3A] text-white py-2 px-4 rounded-md cursor-pointer hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                             </Button>
                         </div>
                         <span>Voltar para login</span>
