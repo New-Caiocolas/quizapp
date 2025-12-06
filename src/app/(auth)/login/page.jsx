@@ -43,26 +43,21 @@ export default function Login() {
             });
 
             if (result.error) {
-                // Lida com erro (ex: Credenciais erradas)
                 renderError(result.error); 
             } else {
-                // SUCESSO: Redireciona para a raiz /
                 router.push('/'); 
             }
 
         } catch (error) {
-            // Tratamento de erro de conexão
             renderError("Erro de conexão com o servidor.");
         } finally {
             setIsSubmitting(false);
         }
-    } // 🛑 Fim correto da função handleSubmit
+    }
 
-    // ✅ O RETURN DO JSX DEVE ESTAR AQUI, DENTRO DA FUNÇÃO PRINCIPAL Login()
     return (
         <main id="login" className="min-h-screen w-full flex items-center justify-center">
-            
-            {/* Ocultar lado direito em mobile para melhor visualização (Tailwind md break point) */}
+             
             <div id="div_login" className="w-full md:w-1/2 flex items-center flex-col justify-center p-8">
                 <div>
                     <div className="flex flex-col items-left w-auto">
@@ -100,7 +95,7 @@ export default function Login() {
                     </Formik>
                 </div>   
             </div>
-            {/* Adicionado 'hidden md:flex' para o lado direito desaparecer em telas pequenas */}
+            
             <div id="lado_direito_login" className="hidden md:flex min-h-screen md:w-1/2 flex items-center justify-center bg-green-900 p-8">
                 <img src="images/Untitled design (8).png" alt="Login Illustration" className="max-w-md h-auto" />
             </div>
