@@ -41,22 +41,15 @@ export default function Login() {
             email: values.email,
             password: values.password,
         });
-
-        // 🛑 DEBUG: Logar o objeto result COMPLETO no console do navegador
         console.log("Resultado do NextAuth:", result);
-
         if (result.error) {
-            // Se houver erro real (credenciais inválidas, etc.)
             renderError(result.error); 
         } else {
-            // ✅ Se NÃO houver erro, faça o redirecionamento
             router.push('/'); 
         }
 
     } catch (error) {
-        // Este catch é o que provavelmente está pegando o erro no Vercel
         renderError("Erro ao tentar conectar ao servidor de autenticação.");
-        // O router.push não é executado se cair aqui.
     } finally {
         setIsSubmitting(false);
     }
