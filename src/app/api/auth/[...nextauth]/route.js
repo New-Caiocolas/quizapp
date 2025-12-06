@@ -42,6 +42,22 @@ const options = NextAuth({
         error: "/login", 
     },
     
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user._id.toString(); 
+            }
+            return token;
+        },
+        
+        async session({ session, token }) {
+            if (token.id) {
+                session.user.id = token.id;
+            }
+            return session;
+        },
+    },
+
 });
 
 export {options as GET, options as POST};
